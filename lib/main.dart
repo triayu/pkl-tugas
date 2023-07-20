@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         EdgeInsets.symmetric(horizontal: 16, vertical: 17)),
               )),
           Text(
-            '*Password 8 karakter dan Huruf Besarr',
+            '*Password 8 kadrakter dan Huruf Besarr',
             style: TextStyle(color: Colors.amber, fontSize: 7),
           )
         ],

@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:prospect/form_input/form_input.dart';
+import 'package:prospect/screens/home_page/widget/datepicker.dart';
+import 'package:prospect/screens/home_page/widget/textarea.dart';
+import 'package:prospect/screens/home_page/widget/timepicker.dart';
+import 'package:prospect/screens/home_page/widget/validator.dart';
+import 'package:prospect/text_input/text_input.dart';
+import 'package:prospect/widget/custom_widget.dart';
 
 class FormView extends StatefulWidget {
   const FormView({super.key});
@@ -8,109 +15,95 @@ class FormView extends StatefulWidget {
 }
 
 class _FormViewState extends State<FormView> {
-  // Show time picker Method
-  void _ShowTimePicker() {
-    showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-    );
+  late TextEditingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
   }
+
+  // void _ShowTimePicker() {
+  //   showTimePicker(
+  //     context: context,
+  //     initialTime: TimeOfDay.now(),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Form Vivi"),
-        actions: const [],
+      appBar: CustomAppBar(
+        title: 'Form',
+        canBack: false,
+        backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              TextFormField(
-                maxLength: 20,
-                decoration: const InputDecoration(
-                  hintText: 'Tulis Nama Anda',
-                  labelText: 'Name',
-                  labelStyle: TextStyle(
-                    color: Colors.black,
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black87,
-                    ),
-                  ),
-                  helperText: "What's Your Name?",
-                ),
-                onChanged: (value) {},
-              ),
-              TextFormField(
-                maxLength: 20,
-                decoration: const InputDecoration(
-                  hintText: 'Tulis Email Anda',
-                  labelText: 'Email',
-                  labelStyle: TextStyle(
-                    color: Colors.black,
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black87,
-                    ),
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: DatePicker(
+                    label: "Start at",
+                    value: DateTime.now(),
                   ),
                 ),
-                onChanged: (value) {},
-              ),
-              Container(
-                child: Column(
-                  children: [
-                    CheckboxListTile(
-                      value: false,
-                      onChanged: (val) {},
-                      activeColor: Colors.amber,
-                      title: Text('ChecBoxListTile'),
-                      subtitle: Text("Vivi"),
-                    ),
-                    RadioListTile(
-                      value: true,
-                      groupValue: AboutListTile,
-                      onChanged: (value) {},
-                      activeColor: Colors.blueAccent,
-                      title: Text('Radio List Tile'),
-                      subtitle: Text("Belajar Form"),
-                    ),
-                    ElevatedButton.icon(
-                      onPressed: () async {
-                        showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(2010),
-                          lastDate: DateTime(2050),
-                        );
-                      },
-                      icon: const Icon(Icons.calendar_view_day_rounded),
-                      label: const Text('Choose Date'),
-                    ),
-                    MaterialButton(
-                      onPressed: _ShowTimePicker,
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          'TimePicker',
-                          style: TextStyle(
-                            color: Colors.white,
-                          
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                      color: Colors.blueGrey,
-                    ),
-                  ],
+                const SizedBox(
+                  width: 12.0,
                 ),
-              )
-            ],
-          ),
+                Expanded(
+                  child: DatePicker(
+                    label: "End at",
+                    value: DateTime.now(),
+                  ),
+                ),
+              ],
+            ),
+            // const TimePicker(
+            //   label: "Working hours",
+            //   value: TimeOfDay(
+            //     hour: 13,
+            //     minute: 30),
+            // ),
+            TextArea(
+              label: "Memo",
+              value: "-",
+            ),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.save),
+              label: const Text("Save"),
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
+              onPressed: () {
+                // bool isValid = controller.formKey.currentState.validate()
+              },
+            )
+          ],
+          // key: controller.formKey,
+          // child: Column(
+          //   children: [
+          //     TextInput(
+          //       title: 'Email',
+          //       validator: (val) {
+          //         Validator.email(val);
+          //       },
+          //     ),
+          //   ],
+          // ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(50),
+        height: 30,
+        margin: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.blueAccent,
+          boxShadow: [
+            BoxShadow(blurStyle: BlurStyle.inner),
+          ],
         ),
       ),
     );

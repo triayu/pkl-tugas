@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prospect/screens/home_page/widget/setting.dart';
+// import 'package:prospect/screens/home_page/widget/setting.dart';
 
 // ignore: must_be_immutable
 class ContactView extends StatefulWidget {

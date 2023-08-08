@@ -44,7 +44,7 @@ class _HomeViewState extends State<HomeView> {
             child: widget.activePage,
           ),
         ),
-        appBar: widget.activeIndex == 1 || widget.activeIndex == 2
+        appBar: widget.activeIndex == 1 || widget.activeIndex == 2 
             ? CustomAppBar(
                 title: widget.activeTittle,
                 canBack: false,

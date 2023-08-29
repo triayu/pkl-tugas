@@ -44,19 +44,19 @@ class Validator {
 
 
 // class Validator {
-//   // static String? rule(
-//   //   String? value, {
-//   //     required bool = false,
-//   //   }
-//   // )
-//   // {
-//   //   if (required && value!.isEmpty){
-//   //     return "This Field is required";
-//   //   }
-//   //   return null;
-//   // }
+//   static String? rule(
+//     String? value, {
+//       required bool = false,
+//     }
+//   )
+//   {
+//     if (required && value!.isEmpty){
+//       return "This Field is required";
+//     }
+//     return null;
+//   }
 
-//   // String Validator
+//   // /String Validator
 //   static String? required(String? value) {
 //     if (value!.isEmpty) return "This field is required";
 //     return null;
@@ -64,5 +64,23 @@ class Validator {
 
 //   static String? email(String? value) {
 //     if (value!.isEmpty) return "This field is required";
+
+//     final bool isValidEmail = RegExp(
+//         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/-?^_'{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+" )
+//       .hasMatch(value);
+
+//       if (!isvalidEmail){
+//         return "This field is not in a valid email format";
+//       }
+//       return null;
+//   }
+
+//   static String? number(String? value) {
+//     if (value.isEmpty) return "This field is required";
+
+//     final bool isNumber = RegExp(r"^[0-9]+$").hasMatch(value);
+//     if (!isNumber) {
+//       return "This field is not in a valid number format";
+//     }
 //   }
 // }

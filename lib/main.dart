@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prospect/form/form.dart';
+import 'package:prospect/screens/latihan.dart';
 import 'package:prospect/text_input/text_input.dart';
 
 import 'screens/ui_login/login.dart';
@@ -15,17 +17,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 255, 255, 255)),
-        useMaterial3: true,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: LoginView(
-        title: 'Flutter Demo Home Page',
-      ),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Color.fromARGB(255, 255, 255, 255)),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: FormView());
   }
 }
 

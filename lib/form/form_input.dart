@@ -18,24 +18,19 @@ class FormInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children:[
+      children: [
         title != ''
-        ? Text(
-          title,
-          textAlign: TextAlign.start,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: fontWeight,
-            color: Colors.black,
-          ),
-        )
-        : Container(
-
-        ),
-        Container(
-          
-        )
-
+            ? Text(
+                title,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: fontWeight,
+                  color: Colors.black,
+                ),
+              )
+            : Container(),
+        Container()
       ],
     );
   }

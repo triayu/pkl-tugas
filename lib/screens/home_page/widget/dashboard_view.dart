@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:prospect/screens/home_page/widget/form.dart';
+import 'package:prospect/form/form.dart';
 import 'package:prospect/screens/home_page/widget/isi_contact.dart';
 
 class Dashboard_view extends StatelessWidget {
@@ -145,28 +145,29 @@ class Dashboard_view extends StatelessWidget {
                     },
                     itemCount: 8),
               ),
-              Container(
-                margin: EdgeInsets.all(5),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Color.fromARGB(255, 0, 0, 0))),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              // builder: (context) => ContactView()),
-                              builder: (context) => FormView()),
-                        );
-                      },
-                      child: Text(
-                        "Masuk",
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      )),
-                ),
-              ),
+              // Container(
+              //   margin: EdgeInsets.all(5),
+              //   child: SizedBox(
+              //     width: MediaQuery.of(context).size.width,
+              //     child: ElevatedButton(
+              //       style: ButtonStyle(
+              //           backgroundColor: MaterialStateProperty.all(
+              //               Color.fromARGB(255, 0, 0, 0))),
+              //       onPressed: () {
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               // builder: (context) => ContactView()),
+              //               builder: (context) => FormView()),
+              //         );
+              //       },
+              //       child: Text(
+              //         "Masuk",
+              //         style: TextStyle(fontSize: 15, color: Colors.white),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           )
         ],

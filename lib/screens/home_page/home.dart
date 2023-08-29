@@ -5,7 +5,7 @@ import 'package:prospect/screens/home_page/widget/contact.dart';
 import 'package:prospect/screens/home_page/widget/dialog.dart';
 import 'package:prospect/screens/home_page/widget/drawer.dart';
 import 'package:prospect/screens/home_page/widget/event.dart';
-import 'package:prospect/screens/home_page/widget/setting.dart';
+import 'package:prospect/screens/home_page/widget/task.dart';
 import 'package:prospect/widget/custom_widget.dart';
 import 'widget/dashboard_view.dart';
 
@@ -17,7 +17,7 @@ class HomeView extends StatefulWidget {
     Dashboard_view(),
     ContactView(),
     EventView(),
-    SettingView()
+    TaskView()
   ];
 
   Widget activePage = Dashboard_view();
@@ -29,10 +29,10 @@ class HomeView extends StatefulWidget {
     Icon(Icons.home),
     Icon(Icons.contact_mail),
     Icon(Icons.event),
-    Icon(Icons.settings)
+    Icon(Icons.task)
   ];
 
-  List<String> title = ['Home ', 'Contact', 'Events', 'Setting'];
+  List<String> title = ['Home ', 'Contact', 'Events', 'Task'];
 }
 
 class _HomeViewState extends State<HomeView> {
@@ -44,7 +44,9 @@ class _HomeViewState extends State<HomeView> {
             child: widget.activePage,
           ),
         ),
-        appBar: widget.activeIndex == 1 || widget.activeIndex == 2 
+        appBar: widget.activeIndex == 1 ||
+                widget.activeIndex == 2 ||
+                widget.activeIndex == 3
             ? CustomAppBar(
                 title: widget.activeTittle,
                 canBack: false,
@@ -125,4 +127,4 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-// class ButtomNavigationBarItem {}
+

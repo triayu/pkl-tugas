@@ -1,15 +1,14 @@
 // import 'package:example/core.dart';
+
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 class DatePicker extends StatefulWidget {
   final String label;
   final DateTime? value;
-
-  const DatePicker({
-    Key? key,
-    required this.label,
-    this.value,
-  }) : super(key: key);
+  final void Function(DateTime)? onChanged;
+  DatePicker({Key? key, required this.label, this.value, this.onChanged})
+      : super(key: key);
 
   @override
   State<DatePicker> createState() => _DatePickerState();
@@ -22,17 +21,16 @@ class _DatePickerState extends State<DatePicker> {
   @override
   void initState() {
     super.initState();
-    var initialValue;
-    controller = TextEditingController(text: initialValue);
+    controller = TextEditingController();
+    selectedDate = widget.value;
+    if (selectedDate != null) {
+      controller.text = formattedValue;
+    }
   }
 
-  // String get initialValue {
-  //   return DateFormat("d MMM y").format(widget.value!);
-  // }
-
-  // String get formattedValue {
-  //   return DateFormat("d MMM y").format(selectedDate!);
-  // }
+  String get formattedValue {
+    return DateFormat("d MMM y").format(selectedDate!);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,33 +38,41 @@ class _DatePickerState extends State<DatePicker> {
       onTap: () async {
         DateTime? pickerDate = await showDatePicker(
           context: context,
-          initialDate: DateTime.now(),
+          initialDate: selectedDate ?? DateTime.now(),
           firstDate: DateTime(2000),
           lastDate: DateTime(2050),
         );
 
-        selectedDate = pickerDate;
-        controller.text = selectedDate.toString();
-        setState(() {});
+        if (pickerDate != null) {
+          selectedDate = pickerDate;
+          controller.text = formattedValue;
+          widget.onChanged?.call(selectedDate!);
+          setState(() {});
+        }
       },
       child: TextFormField(
         controller: controller,
         maxLength: 20,
+        enabled: false,
         decoration: InputDecoration(
           labelText: widget.label,
           labelStyle: const TextStyle(
-            color: Colors.grey,
+            color: Colors.black,
           ),
           suffixIcon: const Icon(
             Icons.date_range,
           ),
           enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.black26,
+              color: Colors.black,
+            ),
+          ),
+          disabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.black,
             ),
           ),
         ),
-        onChanged: (value) {},
       ),
     );
   }
